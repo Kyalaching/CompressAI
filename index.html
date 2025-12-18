@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gevelop - Free online file optimization tools. Compress PDF, convert PDF to Word, merge PDF files, and compress images with high quality retention.">
+    <meta name="keywords" content="PDF compression, PDF to Word, merge PDF, image compression, file optimization, online tools">
+    <meta name="author" content="Gevelop Tools">
+    <title>Gevelop | Free Online File Optimization Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4a6bff;
+            --primary-dark: #3a56cc;
+            --secondary: #00c9a7;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+
+        /* Tools Grid */
+        .tools-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .tool-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(74, 107, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tool-icon i {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .tool-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .tool-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .tool-features li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tool-features li i {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+
+        .tool-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            width: 100%;
+            text-align: center;
+        }
+
+        .tool-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Tool Interface */
+        .tool-interface {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .tool-interface.active {
+            display: block;
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .tool-header h3 {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-to-tools {
+            background-color: var(--light-gray);
+            color: var(--dark);
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-to-tools:hover {
+            background-color: #dde1e7;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--primary);
+            border-radius: var(--border-radius);
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: rgba(74, 107, 255, 0.03);
+            transition: var(--transition);
+        }
+
+        .upload-area:hover {
+            background-color: rgba(74, 107, 255, 0.08);
+        }
+
+        .upload-area i {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .upload-area h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .upload-area p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 16px;
+        }
+
+        .upload-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .file-list {
+            margin-bottom: 30px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-name {
+            font-weight: 500;
+        }
+
+        .file-size {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .file-action-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .file-action-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Tool Options */
+        .tool-options {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .option-group {
+            margin-bottom: 20px;
+        }
+
+        .option-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .option-group select, .option-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: var(--border-radius);
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+        }
+
+        .sortable-list {
+            list-style: none;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 15px;
+        }
+
+        .sortable-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            cursor: move;
+        }
+
+        .sortable-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .sortable-item i {
+            color: var(--gray);
+        }
+
+        /* Action Area */
+        .action-area {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+        }
+
+        .process-btn {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .process-btn:hover {
+            background-color: #00b394;
+        }
+
+        .process-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .download-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            display: none;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Ads Section */
+        .ad-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .ad-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ad-container {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ad-placeholder {
+            color: var(--gray);
+            padding: 30px;
+        }
+
+        .ad-horizontal {
+            width: 100%;
+            height: 100px;
+        }
+
+        .ad-vertical {
+            width: 300px;
+            height: 250px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #b0b7c3;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #b0b7c3;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-interface {
+                padding: 25px;
+            }
+            
+            .tool-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .tool-header h3 {
+                font-size: 1.4rem;
+            }
+            
+            .ad-vertical {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .tools-section {
+                padding: 40px 0;
+            }
+            
+            .upload-area {
+                padding: 40px 15px;
+            }
+            
+            .process-btn, .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">G</div>
+                    <div class="logo-text">Ge<span>velop</span></div>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">PDF Tools</a></li>
+                    <li><a href="#">Image Tools</a></li>
+                    <li><a href="#">More Tools</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Optimize Your Files with Gevelop Tools</h1>
+            <p>Free online tools to compress, convert, merge, and optimize PDFs and images. No installation required, 100% client-side processing for maximum privacy.</p>
+            
+            <!-- Ad Unit 1 - Horizontal Banner -->
+            <div class="ad-section">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-container ad-horizontal">
+                    <!-- Google AdSense Horizontal Ad -->
+                    <div class="ad-placeholder">
+                        <!-- Replace with your AdSense code -->
+                        <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_CLIENT_ID" crossorigin="anonymous"></script> -->
+                        <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-YOUR_CLIENT_ID" data-ad-slot="YOUR_AD_SLOT_ID" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+                        <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+                        <p>Google AdSense Ad - 728x90</p>
+                        <p>Ad Unit ID: YOUR_HORIZONTAL_AD_ID</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Tools Section -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>File Optimization Tools</h2>
+                <p>Choose from our selection of powerful, privacy-focused tools that work directly in your browser</p>
+            </div>
+            
+            <!-- Tools Grid -->
+            <div class="tools-grid">
+                <!-- Compress PDF -->
+                <div class="tool-card" data-tool="compress-pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Compress PDF</h3>
+                    <p>Reduce PDF file size while maintaining quality. Perfect for sharing and storage.</p>
+                    <ul class="tool-features">
+                        <li><i class="fas fa-check"></i> Reduce size by up to 90%</li>
+                        <li><i class="fas fa-check"></i> Preserve text and image quality</li>
+                        <li><i class="fas fa-check"></i> No file size limits</li>
+                    </ul>
+                    <div class="tool-btn">Compress PDF</div>
+                </div>
+                
+                <!-- PDF to Word -->
+                <div class="tool-card" data-tool="pdf-to-word">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3>PDF to Word</h3>
+                    <p>Convert PDF files to editable Word documents with high accuracy.</p>
+                    <ul class="tool-features">
+                        <li><i class="fas fa-check"></i> Preserve formatting and layout</li>
+                        <li><i class="fas fa-check"></i> Extract text and images</li>
+                        <li><i class="fas fa-check"></i> Convert multiple files at once</li>
+                    </ul>
+                    <div class="tool-btn">Convert to Word</div>
+                </div>
+                
+                <!-- Merge PDF -->
+                <div class="tool-card" data-tool="merge-pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDF files into a single document in the order you want.</p>
+                    <ul class="tool-features">
+                        <li><i class="fas fa-check"></i> Drag and drop reordering</li>
+                        <li><i class="fas fa-check"></i> Merge unlimited PDFs</li>
+                        <li><i class="fas fa-check"></i> Preserve original quality</li>
+                    </ul>
+                    <div class="tool-btn">Merge PDFs</div>
+                </div>
+                
+                <!-- Image Compression -->
+                <div class="tool-card" data-tool="image-compression">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>Image Compression</h3>
+                    <p>Compress JPG, PNG, GIF, and WebP images without noticeable quality loss.</p>
+                    <ul class="tool-features">
+                        <li><i class="fas fa-check"></i> Adjustable compression level</li>
+                        <li><i class="fas fa-check"></i> Batch process multiple images</li>
+                        <li><i class="fas fa-check"></i> Supports all image formats</li>
+                    </ul>
+                    <div class="tool-btn">Compress Images</div>
+                </div>
+            </div>
+            
+            <!-- Ad Unit 2 - Vertical Banner -->
+            <div class="ad-section">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-container ad-vertical">
+                    <!-- Google AdSense Vertical Ad -->
+                    <div class="ad-placeholder">
+                        <!-- Replace with your AdSense code -->
+                        <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_CLIENT_ID" crossorigin="anonymous"></script> -->
+                        <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-YOUR_CLIENT_ID" data-ad-slot="YOUR_AD_SLOT_ID" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+                        <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+                        <p>Google AdSense Ad - 300x250</p>
+                        <p>Ad Unit ID: YOUR_VERTICAL_AD_ID</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Interface (Hidden by default) -->
+            <div id="tool-interface" class="tool-interface">
+                <div class="tool-header">
+                    <h3><i class="fas fa-file-pdf" id="tool-icon"></i> <span id="tool-title">Compress PDF</span></h3>
+                    <button class="back-to-tools"><i class="fas fa-arrow-left"></i> Back to Tools</button>
+                </div>
+                
+                <!-- Upload Area -->
+                <div class="upload-area">
+                    <i class="fas fa-cloud-upload-alt" id="upload-icon"></i>
+                    <h4 id="upload-title">Drop your files here or click to upload</h4>
+                    <p id="upload-description">Upload PDF, Word, or image files depending on the tool selected</p>
+                    <input type="file" id="file-input" hidden multiple accept="">
+                    <button class="upload-btn" id="upload-trigger">Select Files</button>
+                </div>
+                
+                <!-- File List -->
+                <div class="file-list" id="file-list">
+                    <!-- Files will be dynamically added here -->
+                </div>
+                
+                <!-- Tool Options -->
+                <div class="tool-options" id="tool-options">
+                    <!-- Options will be dynamically added based on selected tool -->
+                </div>
+                
+                <!-- Action Area -->
+                <div class="action-area">
+                    <button class="process-btn" id="process-btn" disabled>
+                        <i class="fas fa-cogs"></i> Process Files
+                    </button>
+                    <button class="download-btn" id="download-btn">
+                        <i class="fas fa-download"></i> Download Optimized Files
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Ad Unit 3 - Horizontal Banner -->
+            <div class="ad-section">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-container ad-horizontal">
+                    <!-- Google AdSense Horizontal Ad -->
+                    <div class="ad-placeholder">
+                        <!-- Replace with your AdSense code -->
+                        <p>Google AdSense Ad - 728x90</p>
+                        <p>Ad Unit ID: YOUR_HORIZONTAL_AD_ID_2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Gevelop Tools</h4>
+                    <p>Free, privacy-focused online tools for all your file optimization needs. No registration required, no data stored on our servers.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>PDF Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Compress PDF</a></li>
+                        <li><a href="#">PDF to Word</a></li>
+                        <li><a href="#">Merge PDF</a></li>
+                        <li><a href="#">Split PDF</a></li>
+                        <li><a href="#">PDF to JPG</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Image Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Compress Image</a></li>
+                        <li><a href="#">Resize Image</a></li>
+                        <li><a href="#">Convert Image</a></li>
+                        <li><a href="#">Crop Image</a></li>
+                        <li><a href="#">Watermark Image</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Gevelop Tools. All rights reserved. This tool runs entirely in your browser - no files are uploaded to our servers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const toolCards = document.querySelectorAll('.tool-card');
+        const toolInterface = document.getElementById('tool-interface');
+        const backToToolsBtn = document.querySelector('.back-to-tools');
+        const fileInput = document.getElementById('file-input');
+        const uploadTrigger = document.getElementById('upload-trigger');
+        const fileList = document.getElementById('file-list');
+        const toolOptions = document.getElementById('tool-options');
+        const processBtn = document.getElementById('process-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const uploadIcon = document.getElementById('upload-icon');
+        const uploadTitle = document.getElementById('upload-title');
+        const uploadDescription = document.getElementById('upload-description');
+        const toolTitle = document.getElementById('tool-title');
+        const toolIcon = document.getElementById('tool-icon');
+        
+        // Current tool state
+        let currentTool = null;
+        let uploadedFiles = [];
+        
+        // Tool configurations
+        const tools = {
+            'compress-pdf': {
+                title: 'Compress PDF',
+                icon: 'fas fa-file-pdf',
+                uploadIcon: 'fas fa-file-pdf',
+                uploadTitle: 'Drop your PDF files here or click to upload',
+                uploadDescription: 'Upload one or more PDF files to compress',
+                accept: '.pdf',
+                options: `
+                    <div class="option-group">
+                        <label for="compression-level">Compression Level</label>
+                        <select id="compression-level">
+                            <option value="low">Low Compression (Best Quality)</option>
+                            <option value="medium" selected>Medium Compression (Recommended)</option>
+                            <option value="high">High Compression (Smaller File)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="pdf-quality">Output Quality</label>
+                        <select id="pdf-quality">
+                            <option value="high" selected>High (Print quality)</option>
+                            <option value="medium">Medium (Screen viewing)</option>
+                            <option value="low">Low (Web use)</option>
+                        </select>
+                    </div>
+                `
+            },
+            'pdf-to-word': {
+                title: 'PDF to Word',
+                icon: 'fas fa-file-word',
+                uploadIcon: 'fas fa-file-pdf',
+                uploadTitle: 'Drop your PDF files here or click to convert to Word',
+                uploadDescription: 'Upload PDF files to convert to editable Word documents',
+                accept: '.pdf',
+                options: `
+                    <div class="option-group">
+                        <label for="output-format">Output Format</label>
+                        <select id="output-format">
+                            <option value="docx" selected>DOCX (Microsoft Word)</option>
+                            <option value="doc">DOC (Legacy Word Format)</option>
+                            <option value="rtf">RTF (Rich Text Format)</option>
+                            <option value="txt">TXT (Plain Text)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="preserve-layout">Preserve Layout</label>
+                        <select id="preserve-layout">
+                            <option value="yes" selected>Yes - Keep original formatting</option>
+                            <option value="no">No - Extract text only</option>
+                        </select>
+                    </div>
+                `
+            },
+            'merge-pdf': {
+                title: 'Merge PDF',
+                icon: 'fas fa-copy',
+                uploadIcon: 'fas fa-file-pdf',
+                uploadTitle: 'Drop your PDF files here or click to merge',
+                uploadDescription: 'Upload multiple PDF files to merge into a single document',
+                accept: '.pdf',
+                options: `
+                    <div class="option-group">
+                        <label>Arrange PDF Order (Drag to reorder)</label>
+                        <ul class="sortable-list" id="sortable-list">
+                            <!-- Files will be added here as sortable items -->
+                        </ul>
+                    </div>
+                `
+            },
+            'image-compression': {
+                title: 'Image Compression',
+                icon: 'fas fa-file-image',
+                uploadIcon: 'fas fa-file-image',
+                uploadTitle: 'Drop your images here or click to compress',
+                uploadDescription: 'Upload JPG, PNG, GIF, or WebP images to compress',
+                accept: '.jpg,.jpeg,.png,.gif,.webp',
+                options: `
+                    <div class="option-group">
+                        <label for="image-quality">Compression Quality</label>
+                        <select id="image-quality">
+                            <option value="90">High Quality (90%)</option>
+                            <option value="75" selected>Good Quality (75%)</option>
+                            <option value="50">Medium Quality (50%)</option>
+                            <option value="30">Low Quality (30%)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="image-format">Output Format</label>
+                        <select id="image-format">
+                            <option value="original" selected>Keep Original Format</option>
+                            <option value="jpg">JPG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WebP (Recommended)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="resize-toggle">
+                            <input type="checkbox" id="resize-toggle"> Resize Images
+                        </label>
+                        <div id="resize-options" style="display: none; margin-top: 10px;">
+                            <label for="max-width">Maximum Width (px)</label>
+                            <input type="number" id="max-width" min="100" max="5000" value="1920">
+                            <label for="max-height" style="margin-top: 10px;">Maximum Height (px)</label>
+                            <input type="number" id="max-height" min="100" max="5000" value="1080">
+                        </div>
+                    </div>
+                `
+            }
+        };
+        
+        // Event Listeners
+        toolCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const toolId = card.getAttribute('data-tool');
+                selectTool(toolId);
+            });
+        });
+        
+        backToToolsBtn.addEventListener('click', () => {
+            toolInterface.classList.remove('active');
+            resetToolState();
+        });
+        
+        uploadTrigger.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', handleFileUpload);
+        
+        processBtn.addEventListener('click', processFiles);
+        
+        downloadBtn.addEventListener('click', downloadFiles);
+        
+        // Functions
+        function selectTool(toolId) {
+            currentTool = toolId;
+            const tool = tools[toolId];
+            
+            // Update UI
+            toolTitle.textContent = tool.title;
+            toolIcon.className = tool.icon;
+            uploadIcon.className = tool.uploadIcon;
+            uploadTitle.textContent = tool.uploadTitle;
+            uploadDescription.textContent = tool.uploadDescription;
+            
+            // Set file input accept attribute
+            fileInput.setAttribute('accept', tool.accept);
+            
+            // Set tool options
+            toolOptions.innerHTML = tool.options;
+            
+            // Show tool interface
+            toolInterface.classList.add('active');
+            
+            // Initialize tool-specific functionality
+            if (toolId === 'merge-pdf') {
+                makeSortableList();
+            }
+            
+            if (toolId === 'image-compression') {
+                const resizeToggle = document.getElementById('resize-toggle');
+                const resizeOptions = document.getElementById('resize-options');
+                
+                resizeToggle.addEventListener('change', () => {
+                    resizeOptions.style.display = resizeToggle.checked ? 'block' : 'none';
+                });
+            }
+            
+            // Scroll to tool interface
+            toolInterface.scroll
